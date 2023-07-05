@@ -9,9 +9,9 @@ export const DisplayList = (list) => {
     listItem.innerHTML = `
       <div class="input-container">
         <input type="checkbox" />
-        <input type="text" placeholder="${task.title}" />
+        <input type="text" value="${task.title}"/>
       </div>
-      <div class="extra">
+      <div class="actions">
         <!-- <span class="due-date">July 20, 2023 @ 12:00 AM</span> -->
         <i class="fa-regular fa-calendar-days"></i>
         <i class="fa-regular fa-trash-can"></i>
