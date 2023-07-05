@@ -8,7 +8,7 @@ export const DeleteTask = (list) => {
 
   function handleDelete(event) {
     const taskElement = event.target.closest("li");
-    const taskId = liParent.dataset.id;
+    const taskId = taskElement.dataset.id;
     removeTaskById(taskId);
     taskElement.remove();
   }
