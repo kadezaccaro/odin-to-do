@@ -1,6 +1,6 @@
 import { DisplayList } from "./DisplayList";
 
-class Task {
+export class Task {
   static currentId = 1;
 
   constructor(title) {
