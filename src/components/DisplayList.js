@@ -1,3 +1,4 @@
+import { EditTask } from "./EditTask";
 import { DeleteTask } from "./DeleteTask";
 
 export const DisplayList = (list) => {
@@ -19,6 +20,8 @@ export const DisplayList = (list) => {
     `;
     listItem.setAttribute("data-id", task.id);
     taskList.appendChild(listItem);
+
+    EditTask(listItem, list);
   });
 
   DeleteTask(list);
