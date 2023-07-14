@@ -1,4 +1,5 @@
 import "./styles.css";
-import { AddTask } from "./components/AddTask";
+import { initTaskList, handleAddBtnClick } from "./modules/taskRegistry";
 
-AddTask();
+initTaskList();
+handleAddBtnClick();

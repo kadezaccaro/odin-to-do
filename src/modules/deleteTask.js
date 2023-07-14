@@ -1,6 +1,6 @@
-import { Task } from "./AddTask";
+import { list, Task } from "./taskRegistry";
 
-export const DeleteTask = (list) => {
+export function deleteTask() {
   const trashIcons = document.querySelectorAll(".fa-trash-can");
   trashIcons.forEach((icon) => {
     icon.addEventListener("click", handleDelete);
@@ -22,4 +22,4 @@ export const DeleteTask = (list) => {
       Task.currentId = 1;
     }
   }
-};
+}
