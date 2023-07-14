@@ -14,6 +14,7 @@
   --fs-md: 24px;
   --fs-lg: 32px;
   --fs-xl: 40px;
+  --fs-icons: 20px;
 }
 
 /* || GENERAL */
@@ -98,6 +99,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   list-style-type: none;
   background-color: var(--clr-fg);
   padding: 16px;
@@ -114,6 +116,7 @@ li {
   grid-template-columns: 24px auto;
   gap: 8px;
   font-size: var(--fs-md);
+  flex-grow: 1;
 }
 
 input[type="checkbox"] {
@@ -132,21 +135,30 @@ input[type="text"] {
 .actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   font-family: monospace;
+}
+
+.due-date {
   font-size: var(--fs-sm);
+  visibility: hidden;
 }
 
 i {
   cursor: pointer;
-  font-size: var(--fs-md);
+  font-size: var(--fs-icons);
   color: var(--clr-icons);
+}
+
+.fa-calendar-days:hover {
+  color: var(--clr-accent);
 }
 
 .fa-trash-can:hover {
   color: var(--clr-delete);
 }
 
-.fa-calendar-days:hover {
-  color: var(--clr-accent);
+.complete input {
+  color: var(--clr-icons);
+  text-decoration: line-through;
 }
