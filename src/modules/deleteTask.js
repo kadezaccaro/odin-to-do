@@ -1,16 +1,13 @@
 import { list, Task } from "./taskRegistry";
 
-export function deleteTask() {
-  const trashIcons = document.querySelectorAll(".fa-trash-can");
-  trashIcons.forEach((icon) => {
-    icon.addEventListener("click", handleDelete);
-  });
+export function deleteTask(listItem) {
+  const trashIcon = listItem.querySelector(".fa-trash-can");
+  trashIcon.addEventListener("click", handleDelete);
 
-  function handleDelete(event) {
-    const taskElement = event.target.closest("li");
-    const taskId = taskElement.dataset.id;
+  function handleDelete() {
+    const taskId = listItem.dataset.id;
     removeTaskById(taskId);
-    taskElement.remove();
+    listItem.remove();
   }
 
   function removeTaskById(taskId) {
