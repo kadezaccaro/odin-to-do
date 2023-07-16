@@ -10,6 +10,7 @@
   --clr-delete: #dc2626;
   --clr-icons: #737373;
 
+  --fs-xs: 14px;
   --fs-sm: 16px;
   --fs-md: 24px;
   --fs-lg: 32px;
@@ -134,14 +135,10 @@ input[type="text"] {
 
 .actions {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 16px;
   font-family: monospace;
-}
-
-.due-date {
-  font-size: var(--fs-sm);
-  visibility: hidden;
 }
 
 i {
@@ -161,4 +158,22 @@ i {
 .complete input {
   color: var(--clr-icons);
   text-decoration: line-through;
+}
+
+.flatpickr-calendar {
+  font-family: monospace;
+}
+
+input.due-date {
+  text-align: center;
+  font-size: var(--fs-xs);
+  font-family: monospace;
+  width: 100%;
+  color: var(--clr-accent);
+  border-radius: 4px;
+  border: 1px solid var(--clr-accent);
+}
+
+input.hide-due-date {
+  visibility: hidden;
 }
