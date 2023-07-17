@@ -21,8 +21,8 @@ export function renderTask(task) {
 
   taskList.appendChild(listItem);
 
-  focusNextInputOnEnter();
+  focusNextInputOnEnter(listItem);
   toggleDueDate(listItem);
   editTask(listItem);
-  deleteTask();
+  deleteTask(listItem);
 }

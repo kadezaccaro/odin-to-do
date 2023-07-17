@@ -1,45 +1,40 @@
 import { list, Task, addTask } from "./taskRegistry";
 
 export function editTask(listItem) {
-  listItem.addEventListener("change", handleTaskChange);
+  const taskId = listItem.dataset.id;
+  const taskObj = list.find((task) => task.id == taskId);
+  const checkbox = listItem.querySelector('input[type="checkbox"]');
 
-  function handleTaskChange(event) {
-    const taskElement = event.target.closest("li");
-    const taskId = taskElement.dataset.id;
-    const taskObj = list.find((task) => task.id == taskId);
-    const inputVal = taskElement.querySelector('input[type="text"]').value;
+  listItem.addEventListener("change", () => handleChange(taskObj, listItem));
+  checkbox.addEventListener("click", () => handleCheckbox(taskObj, listItem));
+
+  function handleChange(taskObj, listItem) {
+    const inputVal = listItem.querySelector('input[name="task-input"]').value;
     taskObj.title = inputVal;
+    console.log(list);
+  }
 
-    if (event.target.checked) {
-      taskObj.complete = true;
-      listItem.classList.add("complete");
-    } else if (event.target.type === "checkbox" && !event.target.checked) {
-      taskObj.complete = false;
-      listItem.classList.remove("complete");
-    }
+  function handleCheckbox(taskObj, listItem) {
+    taskObj.complete = listItem.querySelector('input[type="checkbox"]').checked;
+    listItem.classList.toggle("complete", taskObj.complete);
   }
 }
 
-export function focusNextInputOnEnter() {
-  const inputs = document.querySelectorAll('input[type="text"]');
-  inputs.forEach((input, index) => {
-    input.addEventListener("keydown", (event) => handleEnterKey(event, index));
-  });
+export function focusNextInputOnEnter(listItem) {
+  const taskId = listItem.dataset.id;
+  const taskObj = list.find((task) => task.id == taskId);
+  const input = listItem.querySelector('input[name="task-input"]');
 
-  function handleEnterKey(event, index) {
+  input.addEventListener("keydown", handleEnterKey);
+
+  function handleEnterKey(event) {
     if (event.key !== "Enter") return;
-
-    const taskElement = event.target.closest("li");
-    const taskId = taskElement.dataset.id;
-    const taskObj = list.find((task) => task.id == taskId);
 
     if (isLastTask(taskObj)) {
       addTask(new Task(`Task ${Task.currentId}`, ""));
-      // todo: focus input after adding
-      console.log(inputs);
     } else {
-      const nextIndex = (index + 1) % inputs.length;
-      inputs[nextIndex].focus();
+      const nextListItem = listItem.nextElementSibling;
+      nextListItem.querySelector('input[name="task-input"]').focus();
     }
   }
 
