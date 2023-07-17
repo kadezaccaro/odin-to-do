@@ -11,7 +11,7 @@ export function toggleDueDate(listItem) {
   });
 }
 
-const flatpickrInstances = new Map();
+export const flatpickrInstances = new Map();
 
 function handleDatePicker(dateInput) {
   const instance = flatpickrInstances.get(dateInput);
@@ -37,7 +37,7 @@ function createFlatpickrInstance(dateInput) {
   flatpickrInstances.set(dateInput, newInstance);
 }
 
-function destroyFlatpickrInstance(dateInput) {
+export function destroyFlatpickrInstance(dateInput) {
   const instance = flatpickrInstances.get(dateInput);
   instance.destroy();
   flatpickrInstances.delete(dateInput);
