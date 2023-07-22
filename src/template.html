@@ -12,13 +12,38 @@
   </head>
   <body>
     <nav class="sidebar">
-      <h1>To-Do List</h1>
-      <button class="add-btn">Add a task</button>
+      <header class="sidebar-header">
+        <button class="new-project-btn">New project</button>
+      </header>
+      <ul class="projects-container"></ul>
     </nav>
+
+    <dialog class="modal">
+      <form method="dialog">
+        <input
+          type="text"
+          id="project-title"
+          name="project-title"
+          placeholder="Untitled"
+          autocomplete="off"
+          required
+          pattern=".*\S+.*"
+          title="Enter a project title with at least one non-space character."
+        />
+
+        <div class="modal-btns">
+          <button class="cancel-btn" type="button">Cancel</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </dialog>
 
     <main>
       <div class="task-list-container">
-        <h1>Page Title</h1>
+        <header class="task-list-header">
+          <h1>Untitled</h1>
+          <button class="add-btn">Add a task</button>
+        </header>
         <ul class="task-list"></ul>
       </div>
     </main>

@@ -11,7 +11,6 @@ export function editTask(listItem) {
   function handleChange(taskObj, listItem) {
     const inputVal = listItem.querySelector('input[name="task-input"]').value;
     taskObj.title = inputVal;
-    console.log(list);
   }
 
   function handleCheckbox(taskObj, listItem) {

@@ -20,8 +20,8 @@ export function initTaskList() {
 }
 
 export function handleAddBtnClick() {
-  const btn = document.querySelector(".add-btn");
-  btn.addEventListener("click", () => {
+  const addBtn = document.querySelector(".add-btn");
+  addBtn.addEventListener("click", () => {
     addTask(new Task(`Task ${Task.currentId}`, ""));
   });
 }
