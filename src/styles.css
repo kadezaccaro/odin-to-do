@@ -88,6 +88,12 @@ button:hover {
 
 .project-link {
   text-decoration: none;
+  color: var(--clr-icons);
+  transition: 0.3s;
+}
+
+.project-link.active {
+  background-color: var(--clr-bg);
   color: var(--clr-text);
 }
 

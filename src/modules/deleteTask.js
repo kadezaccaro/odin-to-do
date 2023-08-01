@@ -1,7 +1,7 @@
-import { list, Task } from "./taskRegistry";
+import { Task } from "./classes";
 import { flatpickrInstances, destroyFlatpickrInstance } from "./dueDate";
 
-export function deleteTask(listItem) {
+export function deleteTask(listItem, project) {
   const trashIcon = listItem.querySelector(".fa-trash-can");
   trashIcon.addEventListener("click", handleDelete);
 
@@ -13,11 +13,11 @@ export function deleteTask(listItem) {
   }
 
   function removeTaskById(taskId) {
-    const index = list.findIndex((task) => task.id == taskId);
-    list.splice(index, 1);
+    const index = project.taskList.findIndex((task) => task.id == taskId);
+    project.taskList.splice(index, 1);
 
     // Reset task numbering if all tasks are deleted
-    if (list.length === 0) {
+    if (project.taskList.length === 0) {
       Task.currentId = 1;
     }
   }

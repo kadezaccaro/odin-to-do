@@ -1,0 +1,34 @@
+export class Project {
+  constructor(title) {
+    this.title = title;
+    this.taskList = [];
+    this.isActive = false;
+  }
+
+  addTask(task) {
+    this.taskList.push(task);
+  }
+
+  setActiveProject(project, projects) {
+    // Deactivate all projects before activating the current project
+    for (const proj of projects) {
+      proj.isActive = false;
+    }
+
+    project.isActive = true;
+  }
+}
+
+export class Task {
+  static currentId = 1;
+
+  constructor(title) {
+    this.title = title;
+    this.id = Task.currentId++;
+    this.completed = false;
+  }
+
+  toggleCompleted() {
+    this.completed = !this.completed;
+  }
+}

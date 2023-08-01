@@ -1,9 +1,10 @@
+import { initProject } from "./app";
+
 export function handleNewProjectClick() {
   const newProjectBtn = document.querySelector(".new-project-btn");
   const modal = document.querySelector(".modal");
   const form = document.querySelector("form");
   const titleInput = form.querySelector("input");
-  const projectsContainer = document.querySelector(".projects-container");
   const cancelBtn = document.querySelector(".cancel-btn");
 
   newProjectBtn.addEventListener("click", () => {
@@ -29,19 +30,7 @@ export function handleNewProjectClick() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    createProjectLink();
+    initProject(titleInput.value);
     modal.close();
   });
-
-  function createProjectLink() {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <div class="project">
-        <a class="project-link" href="#">${titleInput.value}</a>
-        <i class="fa-regular fa-square-plus"></i>
-      </div>
-    `;
-
-    projectsContainer.appendChild(li);
-  }
 }

@@ -1,7 +1,6 @@
 import "./styles.css";
-import { initTaskList, handleAddBtnClick } from "./modules/taskRegistry";
-import { handleNewProjectClick } from "./modules/newProject";
+import { initProject } from "./modules/app";
+import { handleNewProjectClick } from "./modules/newProjectModal";
 
-initTaskList();
-handleAddBtnClick();
+initProject("Untitled");
 handleNewProjectClick();
