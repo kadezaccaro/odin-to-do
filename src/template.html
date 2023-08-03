@@ -19,7 +19,7 @@
     </nav>
 
     <dialog class="modal">
-      <form method="dialog">
+      <form method="dialog" novalidate>
         <input
           type="text"
           id="project-title"
@@ -27,8 +27,6 @@
           placeholder="Untitled"
           autocomplete="off"
           required
-          pattern=".*\S+.*"
-          title="Enter a project title with at least one non-space character."
         />
 
         <div class="modal-btns">

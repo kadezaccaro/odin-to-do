@@ -31,8 +31,24 @@ export function handleNewProjectClick() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    const trimmedTitle = titleInput.value.trim();
+    if (!trimmedTitle) {
+      titleInput.setCustomValidity("Please enter a project title.");
+      titleInput.reportValidity();
+      return;
+    }
+
     destroyAllFlatpickrInstances();
-    initProject(titleInput.value);
+    initProject(trimmedTitle);
     modal.close();
+  });
+
+  // Make enter key submission mimic the behavior of clicking the submit button
+  form.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      form.dispatchEvent(new Event("submit"));
+    }
   });
 }
