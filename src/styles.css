@@ -222,6 +222,10 @@ input.due-date {
   border: 1px solid var(--clr-accent);
 }
 
+.due-date::placeholder {
+  color: var(--clr-accent);
+}
+
 input.hide-due-date {
   visibility: hidden;
 }
@@ -249,7 +253,8 @@ i {
 /* || COMPLETED TASK */
 
 .complete input[name="task-input"],
-.complete .due-date {
+.complete .due-date,
+.complete .due-date::placeholder {
   color: var(--clr-icons);
   text-decoration: line-through;
   border-color: var(--clr-icons);

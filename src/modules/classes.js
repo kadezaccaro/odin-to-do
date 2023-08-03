@@ -24,6 +24,7 @@ export class Task {
 
   constructor(title) {
     this.title = title;
+    this.dueDate = "";
     this.id = Task.currentId++;
     this.completed = false;
   }

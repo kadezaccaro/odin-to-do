@@ -1,5 +1,6 @@
 import { renderTaskListContainer, renderTask } from "./render";
 import { projects } from "./app";
+import { destroyAllFlatpickrInstances } from "./dueDate";
 
 export function handleLinkFocus(event) {
   const projectLinks = document.querySelectorAll(".project-link");
@@ -17,6 +18,8 @@ export function handleLinkFocus(event) {
 export function switchProject(project) {
   const mainContainer = document.querySelector("main");
   mainContainer.innerHTML = "";
+
+  destroyAllFlatpickrInstances();
 
   renderTaskListContainer(project);
 

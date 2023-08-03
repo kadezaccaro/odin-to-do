@@ -1,4 +1,5 @@
 import { initProject } from "./app";
+import { destroyAllFlatpickrInstances } from "./dueDate";
 
 export function handleNewProjectClick() {
   const newProjectBtn = document.querySelector(".new-project-btn");
@@ -28,8 +29,9 @@ export function handleNewProjectClick() {
     }
   });
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    destroyAllFlatpickrInstances();
     initProject(titleInput.value);
     modal.close();
   });

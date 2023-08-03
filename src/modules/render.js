@@ -1,7 +1,7 @@
 import { handleLinkFocus, switchProject } from "./projectSwitching";
 import { addTaskToProjectAndRender } from "./app";
 import { editTask, focusNextInputOnEnter } from "./editTask";
-import { toggleDueDate } from "./dueDate";
+import { toggleDueDate, createFlatpickrInstance } from "./dueDate";
 import { deleteTask } from "./deleteTask";
 
 export function renderProject(project) {
@@ -38,7 +38,7 @@ export function renderTaskListContainer(project) {
       <div class="task-list-container">
         <header class="task-list-header">
           <h1>${project.title}</h1>
-          <button class="add-btn">Add a task</button>
+          <button class="add-btn">Add task</button>
         </header>
         <ul class="task-list"></ul>
       </div>
@@ -60,7 +60,7 @@ export function renderTask(task, project) {
         <input onfocus="this.select();" type="text" name="task-input" value="${task.title}" autocomplete="off"/>
       </div>
       <div class="actions">
-        <input type="text" class="due-date hide-due-date" id="date-input-${task.id}" name="due-date" autocomplete="off" />
+        <input type="text" class="due-date hide-due-date" id="date-input-${task.id}" name="due-date" placeholder="Select due date" autocomplete="off" />
         <i class="fa-regular fa-calendar-days"></i>
         <i class="fa-regular fa-trash-can"></i>
       </div>
@@ -71,6 +71,27 @@ export function renderTask(task, project) {
 
   editTask(listItem, project);
   focusNextInputOnEnter(listItem, project);
-  toggleDueDate(listItem);
+  toggleDueDate(listItem, task);
   deleteTask(listItem, project);
+
+  checkCompletedTask(task);
+  checkDueDate(task, listItem);
+}
+
+function checkCompletedTask(task) {
+  if (task.completed) {
+    const listItem = document.querySelector(`li[data-id="${task.id}"]`);
+    const checkbox = listItem.querySelector('input[type="checkbox"]');
+    listItem.classList.add("complete");
+    checkbox.checked = true;
+  }
+}
+
+function checkDueDate(task, listItem) {
+  if (task.dueDate) {
+    const dateInput = listItem.querySelector(".due-date");
+    dateInput.value = task.dueDate;
+    dateInput.classList.remove("hide-due-date");
+    createFlatpickrInstance(dateInput, task);
+  }
 }
