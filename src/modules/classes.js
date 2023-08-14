@@ -3,9 +3,11 @@ export class Project {
     this.title = title;
     this.taskList = [];
     this.isActive = false;
+    this.taskIdCounter = 1;
   }
 
   addTask(task) {
+    task.id = this.taskIdCounter++;
     this.taskList.push(task);
   }
 
@@ -25,7 +27,7 @@ export class Task {
   constructor(title) {
     this.title = title;
     this.dueDate = "";
-    this.id = Task.currentId++;
+    this.id = null;
     this.completed = false;
   }
 

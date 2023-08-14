@@ -1,4 +1,3 @@
-import { Task } from "./classes";
 import { flatpickrInstances, destroyFlatpickrInstance } from "./dueDate";
 
 export function deleteTask(listItem, project) {
@@ -18,7 +17,7 @@ export function deleteTask(listItem, project) {
 
     // Reset task numbering if all tasks are deleted
     if (project.taskList.length === 0) {
-      Task.currentId = 1;
+      project.taskIdCounter = 1;
     }
   }
 

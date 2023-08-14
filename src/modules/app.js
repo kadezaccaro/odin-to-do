@@ -9,7 +9,6 @@ export function initProject(title) {
   projects.push(project);
   initTaskList(project);
   project.setActiveProject(project, projects);
-  // TODO: reset numbering when project is initiated
 }
 
 function initTaskList(project) {
@@ -19,7 +18,7 @@ function initTaskList(project) {
 }
 
 export function addTaskToProjectAndRender(project) {
-  const task = new Task(`Task ${Task.currentId}`, "");
+  const task = new Task(`Task ${project.taskIdCounter}`, "");
   project.addTask(task);
   renderTask(task, project);
 }
