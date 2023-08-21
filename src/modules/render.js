@@ -1,6 +1,6 @@
 import { handleLinkFocus, switchProject } from "./projectSwitching";
 import { addTaskToProjectAndRender } from "./app";
-import { editTask, focusNextInputOnEnter } from "./editTask";
+import { editTask, focusNextInputOnEnter, renameProject } from "./edit";
 import { toggleDueDate, createFlatpickrInstance } from "./dueDate";
 import { deleteTask } from "./deleteTask";
 
@@ -15,14 +15,41 @@ function renderProjectLink(project) {
   const li = document.createElement("li");
   li.innerHTML = `
     <a class="project project-link" href="#">
-      ${project.title}
-      <i class="fa-regular fa-square-plus"></i>
+      <span class="project-title">${project.title}</span>
+
+      <div class="dropdown">
+        <i class="fa-solid fa-ellipsis"></i>
+
+        <div class="dropdown-content">
+          <button class="dropdown-btn delete-btn">
+            <i class="fa-regular fa-trash-can"></i>
+            Delete
+          </button>
+
+          <button class="dropdown-btn rename-btn">
+            <i class="fa-regular fa-pen-to-square"></i>
+            Rename
+          </button>
+        </div>
+      </div>
     </a>
+    
+    <dialog class="rename-dialog">
+      <form class="rename-form" novalidate>
+        <div class="dialog-contents">
+          <input type="text"/>
+
+          <button type="submit" class="confirm-rename-btn">
+            <i class="fa-solid fa-check"></i>
+          </button>
+        </div>
+      </form
+    </dialog>
   `;
 
   projectsContainer.appendChild(li);
 
-  // Activate the link by default when creating a new project
+  // Activate link by default when creating a new project
   handleLinkFocus();
 
   const projectLink = li.querySelector(".project-link");
@@ -30,6 +57,8 @@ function renderProjectLink(project) {
     handleLinkFocus(event);
     switchProject(project);
   });
+
+  renameProject(li, project);
 }
 
 export function renderTaskListContainer(project) {

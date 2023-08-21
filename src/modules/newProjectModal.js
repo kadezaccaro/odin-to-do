@@ -4,7 +4,7 @@ import { destroyAllFlatpickrInstances } from "./dueDate";
 export function handleNewProjectClick() {
   const newProjectBtn = document.querySelector(".new-project-btn");
   const modal = document.querySelector(".modal");
-  const form = document.querySelector("form");
+  const form = document.querySelector(".new-project-form");
   const titleInput = form.querySelector("input");
   const cancelBtn = document.querySelector(".cancel-btn");
 

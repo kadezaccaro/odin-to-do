@@ -9,6 +9,7 @@
   --clr-btn-text: #171717;
   --clr-delete: #dc2626;
   --clr-icons: #737373;
+  --clr-confirm: #86efac;
 
   --fs-xs: 14px;
   --fs-sm: 16px;
@@ -35,6 +36,8 @@ body {
 
 h1 {
   font-size: var(--fs-lg);
+  word-wrap: break-word;
+  max-width: 80%;
 }
 
 /* || SIDEBAR */
@@ -70,6 +73,8 @@ button:hover {
   width: 100%;
 }
 
+/* || PROJECT LINKS */
+
 .projects-container {
   margin-top: 24px;
 }
@@ -83,6 +88,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   padding: 12px 24px;
 }
 
@@ -90,6 +96,10 @@ button:hover {
   text-decoration: none;
   color: var(--clr-icons);
   transition: 0.3s;
+}
+
+.project-title {
+  overflow: hidden; /* Truncate long project titles */
 }
 
 .project-link.active {
@@ -101,7 +111,91 @@ button:hover {
   background-color: var(--clr-bg);
 }
 
-/* || MODAL */
+.project-icons {
+  display: flex;
+  gap: 16px;
+}
+
+/* || PROJECT DROPDOWN */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--clr-fg);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1;
+  padding: 8px;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  color: var(--clr-text);
+  padding: 8px;
+}
+
+.dropdown-btn i {
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-btn:hover {
+  transform: none;
+  background-color: var(--clr-bg);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Reveal dropdown menu on hover */
+}
+
+/* || RENAME DIALOG */
+
+.rename-dialog {
+  z-index: 10;
+  border: none;
+  background-color: var(--clr-fg);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  margin-left: 24px;
+  border: 1px solid var(--clr-border);
+  border-radius: 4px;
+  max-width: 251px;
+}
+
+.dialog-contents {
+  display: flex;
+}
+
+.rename-dialog input[type="text"] {
+  font-family: monospace;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: var(--fs-projects);
+}
+
+.rename-dialog button {
+  border-radius: 0 4px 4px 0;
+  background-color: var(--clr-confirm);
+  padding: 4px 8px;
+}
+
+.rename-dialog button i {
+  color: var(--clr-btn-text);
+}
+
+.rename-dialog button:hover {
+  transform: none;
+}
+
+/* || NEW PROJECT MODAL */
 
 .modal {
   top: 50%;
@@ -238,11 +332,11 @@ i {
   color: var(--clr-icons);
 }
 
-.fa-calendar-days:hover {
+.task-list .fa-calendar-days:hover {
   color: var(--clr-accent);
 }
 
-.fa-trash-can:hover {
+.task-list .fa-trash-can:hover {
   color: var(--clr-delete);
 }
 
