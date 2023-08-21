@@ -7,9 +7,13 @@ export function handleLinkFocus(event) {
   projectLinks.forEach((link) => link.classList.remove("active"));
 
   if (event) {
-    event.target.classList.add("active");
+    // If a click event occurs on a project link or its dropdown menu, activate the link
+    const closestProjectLink = event.target.closest(".project-link");
+    if (closestProjectLink) {
+      closestProjectLink.classList.add("active");
+    }
   } else {
-    // Add "active" class to newly created project links by default
+    // Make newly-created project links active by default
     const newProjectIndex = projectLinks.length - 1;
     projectLinks[newProjectIndex].classList.add("active");
   }
