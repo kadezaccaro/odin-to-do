@@ -123,12 +123,23 @@ button:hover {
   display: inline-block;
 }
 
+.fa-ellipsis {
+  padding: 2px 8px;
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown:hover .fa-ellipsis {
+  background-color: var(--clr-fg);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: var(--clr-fg);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+  border-top-left-radius: 0;
   z-index: 1;
   padding: 8px;
 }

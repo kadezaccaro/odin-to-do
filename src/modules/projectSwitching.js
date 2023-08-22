@@ -20,11 +20,7 @@ export function handleLinkFocus(event) {
 }
 
 export function switchProject(project) {
-  const mainContainer = document.querySelector("main");
-  mainContainer.innerHTML = "";
-
-  destroyAllFlatpickrInstances();
-
+  clearProject();
   renderTaskListContainer(project);
 
   // Loop through the tasks in the project and render each task
@@ -33,4 +29,11 @@ export function switchProject(project) {
   }
 
   project.setActiveProject(project, projects);
+}
+
+export function clearProject() {
+  const mainContainer = document.querySelector("main");
+  mainContainer.innerHTML = "";
+
+  destroyAllFlatpickrInstances();
 }

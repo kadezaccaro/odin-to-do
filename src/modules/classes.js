@@ -4,6 +4,7 @@ export class Project {
     this.taskList = [];
     this.isActive = false;
     this.taskIdCounter = 1;
+    this.id = Project.getNextProjectId();
   }
 
   addTask(task) {
@@ -19,11 +20,16 @@ export class Project {
 
     project.isActive = true;
   }
+
+  static getNextProjectId() {
+    if (!Project.projectIdCounter) {
+      Project.projectIdCounter = 1;
+    }
+    return Project.projectIdCounter++;
+  }
 }
 
 export class Task {
-  static currentId = 1;
-
   constructor(title) {
     this.title = title;
     this.dueDate = "";

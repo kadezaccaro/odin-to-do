@@ -2,7 +2,7 @@ import { handleLinkFocus, switchProject } from "./projectSwitching";
 import { addTaskToProjectAndRender } from "./app";
 import { editTask, focusNextInputOnEnter, renameProject } from "./edit";
 import { toggleDueDate, createFlatpickrInstance } from "./dueDate";
-import { deleteTask } from "./deleteTask";
+import { deleteProject, deleteTask } from "./delete";
 
 export function renderProject(project) {
   renderProjectLink(project);
@@ -46,6 +46,7 @@ function renderProjectLink(project) {
       </form
     </dialog>
   `;
+  li.setAttribute("data-id", project.id);
 
   projectsContainer.appendChild(li);
 
@@ -54,10 +55,15 @@ function renderProjectLink(project) {
 
   const projectLink = li.querySelector(".project-link");
   projectLink.addEventListener("click", (event) => {
-    handleLinkFocus(event);
-    switchProject(project);
+    const isDeleteBtnClick = event.target.closest(".delete-btn");
+
+    if (!isDeleteBtnClick) {
+      handleLinkFocus(event);
+      switchProject(project);
+    }
   });
 
+  deleteProject(li);
   renameProject(li, project);
 }
 
