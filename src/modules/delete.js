@@ -2,6 +2,7 @@ import { flatpickrInstances, destroyFlatpickrInstance } from "./dueDate";
 import { projects } from "./app";
 import { clearProject, switchProject } from "./projectSwitching";
 import { Project } from "./classes";
+import { saveProjects } from "./localStorage";
 
 export function deleteTask(listItem, project) {
   const trashIcon = listItem.querySelector(".fa-trash-can");
@@ -12,6 +13,7 @@ export function deleteTask(listItem, project) {
     removeTaskById(taskId);
     listItem.remove();
     clearFlatpickr();
+    saveProjects();
   }
 
   function removeTaskById(taskId) {
@@ -53,11 +55,7 @@ export function deleteProject(li) {
       switchProject(firstProject);
     }
 
-    const firstProjectLink = document.querySelector(
-      ".projects-container li:first-child .project-link"
-    );
-    if (!firstProjectLink) return;
-    firstProjectLink.classList.add("active");
+    saveProjects();
   }
 
   function removeProjectById(projectId) {

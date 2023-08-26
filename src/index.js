@@ -1,6 +1,14 @@
 import "./styles.css";
-import { initProject } from "./modules/app";
+import { initWithSavedProjects, initProject } from "./modules/app";
 import { handleNewProjectClick } from "./modules/newProjectModal";
+import { getSavedProjects } from "./modules/localStorage";
 
-initProject("Untitled");
+const savedProjects = getSavedProjects();
+
+if (savedProjects && savedProjects.length > 0) {
+  initWithSavedProjects();
+} else {
+  initProject("Untitled");
+}
+
 handleNewProjectClick();

@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/themes/dark.css";
+import { saveProjects } from "./localStorage";
 
 export function toggleDueDate(listItem, task) {
   const dateInput = listItem.querySelector(".due-date");
@@ -35,6 +36,7 @@ export function createFlatpickrInstance(dateInput, task) {
   });
 
   flatpickrInstances.set(dateInput, newInstance);
+  saveProjects();
 }
 
 export function destroyFlatpickrInstance(dateInput) {

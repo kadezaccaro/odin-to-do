@@ -1,4 +1,5 @@
 import { addTaskToProjectAndRender } from "./app";
+import { saveProjects } from "./localStorage";
 
 export function editTask(listItem, project) {
   const taskId = listItem.dataset.id;
@@ -11,6 +12,7 @@ export function editTask(listItem, project) {
   function handleChange() {
     const inputVal = listItem.querySelector('input[name="task-input"]').value;
     taskObj.title = inputVal;
+    saveProjects();
   }
 
   function handleCheckbox() {
@@ -94,5 +96,6 @@ export function renameProject(li, project) {
     titleElement.textContent = newTitle;
     h1.textContent = newTitle;
     project.title = newTitle;
+    saveProjects();
   }
 }
