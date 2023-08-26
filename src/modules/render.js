@@ -1,4 +1,4 @@
-import { handleLinkFocus, switchProject } from "./projectSwitching";
+import { switchProject } from "./projectSwitching";
 import { addTaskToProjectAndRender } from "./app";
 import { editTask, focusNextInputOnEnter, renameProject } from "./edit";
 import { toggleDueDate, createFlatpickrInstance } from "./dueDate";
@@ -37,7 +37,7 @@ function renderProjectLink(project) {
     <dialog class="rename-dialog">
       <form class="rename-form" novalidate>
         <div class="dialog-contents">
-          <input type="text"/>
+          <input type="text" id="rename-input" autocomplete="off" />
 
           <button type="submit" class="confirm-rename-btn">
             <i class="fa-solid fa-check"></i>
@@ -50,17 +50,12 @@ function renderProjectLink(project) {
 
   projectsContainer.appendChild(li);
 
-  // Activate link by default when creating a new project
-  handleLinkFocus();
-
   const projectLink = li.querySelector(".project-link");
   projectLink.addEventListener("click", (event) => {
     const isDeleteBtnClick = event.target.closest(".delete-btn");
+    if (isDeleteBtnClick) return;
 
-    if (!isDeleteBtnClick) {
-      handleLinkFocus(event);
-      switchProject(project);
-    }
+    switchProject(project);
   });
 
   deleteProject(li);
@@ -109,13 +104,12 @@ export function renderTask(task, project) {
   toggleDueDate(listItem, task);
   deleteTask(listItem, project);
 
-  checkCompletedTask(task);
+  checkCompletedTask(task, listItem);
   checkDueDate(task, listItem);
 }
 
-function checkCompletedTask(task) {
+function checkCompletedTask(task, listItem) {
   if (task.completed) {
-    const listItem = document.querySelector(`li[data-id="${task.id}"]`);
     const checkbox = listItem.querySelector('input[type="checkbox"]');
     listItem.classList.add("complete");
     checkbox.checked = true;

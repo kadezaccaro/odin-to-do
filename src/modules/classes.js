@@ -12,13 +12,13 @@ export class Project {
     this.taskList.push(task);
   }
 
-  setActiveProject(project, projects) {
+  setActiveProject(projects) {
     // Deactivate all projects before activating the current project
     for (const proj of projects) {
       proj.isActive = false;
     }
 
-    project.isActive = true;
+    this.isActive = true;
   }
 
   static getNextProjectId() {
