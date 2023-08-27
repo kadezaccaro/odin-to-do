@@ -11,13 +11,13 @@
   --clr-icons: #737373;
   --clr-confirm: #86efac;
 
-  --fs-xs: 14px;
-  --fs-sm: 16px;
-  --fs-md: 24px;
-  --fs-lg: 32px;
-  --fs-xl: 40px;
-  --fs-icons: 20px;
-  --fs-projects: 20px;
+  --fs-xs: 0.875rem;
+  --fs-sm: 1rem;
+  --fs-md: 1.5rem;
+  --fs-lg: 2rem;
+  --fs-xl: 2.5rem;
+  --fs-icons: 1.25rem;
+  --fs-projects: 1.25rem;
 }
 
 /* || GENERAL */
@@ -45,17 +45,17 @@ h1 {
 .sidebar {
   background-color: var(--clr-fg);
   height: 100%;
-  width: 300px;
+  width: 18.75rem;
   border-right: 1px solid var(--clr-border);
   position: fixed;
 }
 
 .sidebar-header {
-  padding: 24px 24px 0 24px;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
 button {
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   background: var(--clr-accent);
   border: none;
   color: var(--clr-btn-text);
@@ -73,10 +73,50 @@ button:hover {
   width: 100%;
 }
 
+.hide-sidebar-btn {
+  position: absolute;
+  background-color: var(--clr-fg);
+  border: 1px solid var(--clr-border);
+  padding: 0.5rem;
+  bottom: 24px;
+  right: 24px;
+  border-radius: 4px;
+}
+
+.hide-sidebar {
+  width: 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
+}
+
+.hide-sidebar * {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.show-sidebar-btn {
+  position: absolute;
+  background-color: var(--clr-fg);
+  border: 1px solid var(--clr-border);
+  padding: 0.5rem;
+  top: 24px;
+  left: 24px;
+  border-radius: 4px;
+  transition: 1s;
+}
+
+.show-sidebar-btn.hide {
+  visibility: hidden;
+  opacity: 0;
+  left: -80px;
+}
+
 /* || PROJECT LINKS */
 
 .projects-container {
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .projects-container li {
@@ -88,8 +128,8 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  padding: 12px 24px;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .project-link {
@@ -113,7 +153,7 @@ button:hover {
 
 .project-icons {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 /* || PROJECT DROPDOWN */
@@ -124,38 +164,38 @@ button:hover {
 }
 
 .fa-ellipsis {
-  padding: 2px 8px;
+  padding: 0.125rem 0.5rem;
   border-radius: 8px 8px 0 0;
 }
 
 .dropdown:hover .fa-ellipsis {
   background-color: var(--clr-fg);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: var(--clr-fg);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
   border-top-left-radius: 0;
   z-index: 1;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 .dropdown-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   width: 100%;
   background: none;
   color: var(--clr-text);
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 .dropdown-btn i {
-  width: 20px;
+  width: 1.25rem;
   text-align: center;
 }
 
@@ -174,11 +214,11 @@ button:hover {
   z-index: 10;
   border: none;
   background-color: var(--clr-fg);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
-  margin-left: 24px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  margin-left: 1.5rem;
   border: 1px solid var(--clr-border);
   border-radius: 4px;
-  max-width: 251px;
+  max-width: 15.6875rem;
 }
 
 .dialog-contents {
@@ -195,7 +235,7 @@ button:hover {
 .rename-dialog button {
   border-radius: 0 4px 4px 0;
   background-color: var(--clr-confirm);
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
 }
 
 .rename-dialog button i {
@@ -212,12 +252,12 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 40px;
+  padding: 2.5rem;
   border: none;
   border-radius: 8px;
   background-color: var(--clr-bg);
   color: var(--clr-text);
-  width: 400px;
+  max-width: 25rem;
 }
 
 .modal::backdrop {
@@ -227,7 +267,7 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 form input[type="text"] {
@@ -238,7 +278,7 @@ form input[type="text"] {
 .modal-btns {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .modal-btns button {
@@ -257,16 +297,21 @@ main {
   margin-left: 300px;
 }
 
+.main-no-sidebar {
+  margin-left: 0;
+  transition: 1s;
+}
+
 .task-list-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .task-list-container {
-  max-width: 1000px;
-  padding: 160px 80px;
+  max-width: 62.5rem;
+  padding: 10rem 5rem;
   margin: auto;
 }
 
@@ -274,22 +319,26 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 1rem;
   list-style-type: none;
   background-color: var(--clr-fg);
-  padding: 16px;
+  padding: 1rem;
   border: 1px solid var(--clr-border);
   border-radius: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   user-select: none; /* Standard syntax */
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
 }
 
+.task-list li:last-child {
+  margin-bottom: 0;
+}
+
 .input-container {
   display: grid;
-  grid-template-columns: 24px auto;
-  gap: 8px;
+  grid-template-columns: 1.5rem auto;
+  gap: 0.5rem;
   font-size: var(--fs-md);
   flex-grow: 1;
 }
@@ -304,14 +353,15 @@ input[type="text"] {
   border: none;
   font-size: var(--fs-md);
   color: var(--clr-text);
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   font-family: monospace;
 }
 
@@ -363,4 +413,22 @@ i {
   color: var(--clr-icons);
   text-decoration: line-through;
   border-color: var(--clr-icons);
+}
+
+/* || RESPONSIVE */
+
+@media only screen and (max-width: 1112px) {
+  html {
+    font-size: 14px;
+  }
+
+  .task-list-container {
+    padding: 10rem 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  main {
+    margin-left: 0; /* Allow sidebar to overlap on smaller devices */
+  }
 }
