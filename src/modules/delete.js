@@ -45,6 +45,7 @@ export function deleteProject(li) {
     const projectId = li.dataset.id;
     removeProjectById(projectId);
     li.remove();
+    saveProjects();
 
     if (!projectLink.classList.contains("active")) return;
 
@@ -54,8 +55,6 @@ export function deleteProject(li) {
     } else {
       switchProject(firstProject);
     }
-
-    saveProjects();
   }
 
   function removeProjectById(projectId) {
