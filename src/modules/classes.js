@@ -1,10 +1,13 @@
+import { v4 as uuidv4 } from "uuid";
+
 export class Project {
   constructor(title) {
     this.title = title;
     this.taskList = [];
     this.isActive = false;
     this.taskIdCounter = 1;
-    this.id = Project.getNextProjectId();
+    // Assign a unique UUID to each project
+    this.id = uuidv4();
   }
 
   addTask(task) {
@@ -19,13 +22,6 @@ export class Project {
     }
 
     this.isActive = true;
-  }
-
-  static getNextProjectId() {
-    if (!Project.projectIdCounter) {
-      Project.projectIdCounter = 1;
-    }
-    return Project.projectIdCounter++;
   }
 }
 

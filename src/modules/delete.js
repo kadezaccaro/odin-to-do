@@ -61,10 +61,5 @@ export function deleteProject(li) {
   function removeProjectById(projectId) {
     const index = projects.findIndex((project) => project.id == projectId);
     projects.splice(index, 1);
-
-    // Reset project ID if all projects are deleted
-    if (projects.length === 0) {
-      Project.projectIdCounter = 1;
-    }
   }
 }
